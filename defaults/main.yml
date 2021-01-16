@@ -1,0 +1,7 @@
+---
+
+enterprise_controller_home: /opt/appd/ec
+enterprise_console_admin_userame: admin
+enterprise_console_admin_password: changeit!
+
+start_es: true

@@ -1,0 +1,14 @@
+---
+
+- name: login to the Enterprise Console
+  shell: "{{ enterprise_controller_home }}/bin/platform-admin.sh login -u {{ enterprise_console_admin_userame }} -p {{ enterprise_console_admin_password }}"
+  no_log: true
+  become: false
+  
+- name: start Events Service
+  shell: "{{ enterprise_controller_home }}/bin/platform-admin.sh submit-job --service events-service --job start"
+  when: start_es
+  
+- name: stop Events Service
+  shell: "{{ enterprise_controller_home }}/bin/platform-admin.sh submit-job --service events-service --job stop"
+  when: not start_es
